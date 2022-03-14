@@ -118,16 +118,16 @@ public class CompetitionReport {
         long nanosecond = abbreviations.startTime.until(abbreviations.endTime, ChronoUnit.NANOS);
         String nanosecondString = Long.toString(nanosecond);
         nanosecondString = nanosecondString.substring(nanosecondString.length() - 9, nanosecondString.length() - 6);
-        abbreviations.nanoseсonds = nanosecondString;
+        abbreviations.nanosecond = nanosecondString;
 
     }
 
     private void sortAbbreviations() {
+
         Comparator<Abbreviations> dateComparator = Comparator.comparing(Abbreviations::getMinutes)
                 .thenComparing(Abbreviations::getSeconds)
-                .thenComparing(Abbreviations::getNanoseсonds);
-        abbreviations.stream()
-                .sorted(dateComparator);
+                .thenComparing(Abbreviations::getNanosecond);
+        abbreviations.sort(dateComparator);
     }
 
     private void printReport() {
@@ -137,7 +137,7 @@ public class CompetitionReport {
                     String.format("%-30s", abbreviations.get(i).car) + "   | " +
                     abbreviations.get(i).minutes + ":" +
                     abbreviations.get(i).seconds + "." +
-                    abbreviations.get(i).nanoseсonds
+                    abbreviations.get(i).nanosecond
             );
             if (i == 14) {
                 System.out.println("  -------------------------------------------------------------------------");

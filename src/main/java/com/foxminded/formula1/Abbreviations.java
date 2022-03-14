@@ -9,23 +9,26 @@ public class Abbreviations {
     public String car = "";
     public LocalTime startTime;
     public LocalTime endTime;
-    public String minutes  = "";
+    public String minutes = "";
     public String seconds = "";
-    public String nanoseсonds  = "";
+    public String nanosecond = "";
 
-    public String getRacerAbbreviation() {
-        return racerAbbreviation;
-    }public String getMinutes() {
-        return minutes;
-    }public String getSeconds() {
-        return seconds;
-    }public String getNanoseсonds() {
-        return nanoseсonds;
+    public Integer getMinutes() {
+        return Integer.parseInt(minutes);
     }
 
-        @Override
+    public Integer getSeconds() {
+        return Integer.parseInt(seconds);
+    }
+
+    public Integer getNanosecond() {
+
+        return Integer.parseInt(nanosecond);
+    }
+
+    @Override
     public String toString() {
-        return "Abbreviations [ racerAbbreviation= " + racerAbbreviation + "name= " +name +"]";
+        return "Abbreviations [ racerAbbreviation= " + racerAbbreviation + "name= " + name + "]";
     }
 
 }

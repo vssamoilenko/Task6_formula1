@@ -3,7 +3,7 @@ package com.foxminded.formula1;
 import java.time.LocalTime;
 
 public class Results {
-    public  String racerAbbreviation = "";
+    public String racerAbbreviation = "";
     public String date = "";
     public LocalTime time;
 
@@ -11,9 +11,10 @@ public class Results {
 
         return racerAbbreviation;
     }
+
     @Override
     public String toString() {
-        return "Abbreviations [ racerAbbreviation= " + racerAbbreviation + "date= " +date +"]";
+        return "Abbreviations [ racerAbbreviation= " + racerAbbreviation + "date= " + date + "]";
     }
 
 }
