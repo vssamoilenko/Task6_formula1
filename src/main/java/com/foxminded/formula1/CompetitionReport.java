@@ -30,27 +30,34 @@ public class CompetitionReport {
         fillAbbreviationsWithDiffTime();
         sortAbbreviations();
         printReport();
+
     }
 
     private void fillFromFileStartResults() throws IOException {
+
         Path path = Paths.get("Files\\start.log");
         Stream<String> streamOfStrings = Files.lines(path);
         streamOfStrings
                 .forEach(this::parseLineStart);
+
     }
 
     private void fillFromFileEndResults() throws IOException {
+
         Path path = Paths.get("Files\\end.log");
         Stream<String> streamOfStrings = Files.lines(path);
         streamOfStrings
                 .forEach(this::parseLineEnd);
+
     }
 
     private void fillAbbreviationsWithNameCarResults() throws IOException {
+
         Path path = Paths.get("Files\\abbreviations.txt");
         Stream<String> streamOfStrings = Files.lines(path);
         streamOfStrings
                 .forEach(this::parseAbbreviations);
+
     }
 
     private void parseLineStart(String parseLine) {
@@ -74,6 +81,7 @@ public class CompetitionReport {
     }
 
     private void parseAbbreviations(String parseLine) {
+
         List<String> fieldsOfAbbreviations = Arrays.stream(parseLine.split("_"))
                 .collect(Collectors.toList());
         Abbreviations as = new Abbreviations();
@@ -81,6 +89,7 @@ public class CompetitionReport {
         as.name = fieldsOfAbbreviations.get(1);
         as.car = fieldsOfAbbreviations.get(2);
         abbreviations.add(as);
+
     }
 
     private void fillAbbreviationsWithStartResults() {
@@ -109,6 +118,7 @@ public class CompetitionReport {
     }
 
     private void fillDiffTime(Abbreviations abbreviations) {
+
         long hours = abbreviations.startTime.until(abbreviations.endTime, ChronoUnit.HOURS);
         long minutes = (abbreviations.startTime.until(abbreviations.endTime, ChronoUnit.MINUTES)) % 60;
         abbreviations.minutes = String.format("%02d", minutes);
@@ -131,6 +141,7 @@ public class CompetitionReport {
     }
 
     private void printReport() {
+
         for (int i = 0; i < abbreviations.size(); i++) {
             System.out.println(String.format("% 4d", i + 1) + ". " +
                     String.format("%-20s", abbreviations.get(i).name) + "   | " +
